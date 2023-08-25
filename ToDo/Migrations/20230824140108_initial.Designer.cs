@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ToDo.Models;
+using ToDoDemo.Models;
 
 #nullable disable
 
-namespace ToDo.Migrations
+namespace ToDoDemo.Migrations
 {
     [DbContext(typeof(ToDoContext))]
     [Migration("20230824140108_initial")]

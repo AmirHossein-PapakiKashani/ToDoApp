@@ -1,4 +1,4 @@
-﻿namespace ToDo.Models
+﻿namespace ToDoDemo.Models
 {
     public class Filters
     {
@@ -41,9 +41,10 @@
             };
         public bool IsPast => Due.ToLower() == "past";
 
-        public bool IstToday => Due.ToLower() == "today";
+        
 
         public bool IsFuture => Due.ToLower() == "future";
 
+        public bool IstToday => Due.ToLower() == "today";
     }
 }

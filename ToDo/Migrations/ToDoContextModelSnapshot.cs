@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ToDo.Models;
+using ToDoDemo.Models;
 
 #nullable disable
 
-namespace ToDo.Migrations
+namespace ToDoDemo.Migrations
 {
     [DbContext(typeof(ToDoContext))]
     partial class ToDoContextModelSnapshot : ModelSnapshot

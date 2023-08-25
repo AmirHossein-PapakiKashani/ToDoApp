@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ToDo.Models;
+using ToDoDemo.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,4 +1,4 @@
-﻿namespace ToDo.Models
+﻿namespace ToDoDemo.Models
 {
     public class Category
     {
