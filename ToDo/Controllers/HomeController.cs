@@ -10,13 +10,20 @@ namespace ToDoDemo.Controllers
     {
         private ToDoContext context;
 
+
         public HomeController(ToDoContext ctx)
         {
           context = ctx;
         }
-            
+        /// <summary>
+        /// Displays a list of tasks based on filters.
+        /// </summary>
+        /// <param name="id">A filter identifier string.</param>
+        /// <returns>The view with a list of tasks.</returns>
+
         public IActionResult Index(string id)
         {
+            //Code to filter and display tasks based on provided filters
             var filters = new Filters(id);
             ViewBag.Filters = filters;
             ViewBag.Statuses = context.Statues.ToList();
@@ -55,6 +62,10 @@ namespace ToDoDemo.Controllers
             return View(tasks);
         }
 
+        /// <summary>
+        /// Displays a form to add a new task.
+        /// </summary>
+        /// <returns>The view with the task creation form.</returns>
         [HttpGet]
         public IActionResult Add()
         {
@@ -64,9 +75,15 @@ namespace ToDoDemo.Controllers
             return View(tasks);
         }
 
+        /// <summary>
+        /// Handles the submission of the task creation form.
+        /// </summary>
+        /// <param name="task">The task to be added.</param>
+        /// <returns>Redirects to the Index action if successful, or returns the view with errors.</returns>
         [HttpPost]
         public IActionResult Add(ToDo task)
         {
+            // Code to process the submitted task and add it to the database.
             if (ModelState.IsValid) 
             {
                 context.ToDos.Add(task);
@@ -82,15 +99,30 @@ namespace ToDoDemo.Controllers
 
             
         }
+
+        /// <summary>
+        /// Handles the submission of a filter form.
+        /// </summary>
+        /// <param name="filter">An array of filter values.</param>
+        /// <returns>Redirects to the Index action with applied filters.</returns>
         [HttpPost]
         public IActionResult Filter(string[] filter)
         {
+            // Code to apply filters and redirect to the Index action
+
             string id = string.Join("-", filter);
             return RedirectToAction("Index", new {ID = id });
         }
+        /// <summary>
+        /// Marks a task as complete.
+        /// </summary>
+        /// <param name="id">The task identifier.</param>
+        /// <param name="selected">The selected task.</param>
+        /// <returns>Redirects to the Index action after marking the task as complete.</returns>
         [HttpPost]
         public IActionResult MarkComplete([FromRoute] string id, ToDo selected)
         {
+            // Code to mark a task as complete in the database
             selected = context.ToDos.Find(selected.Id)!;
 
             if (selected != null)
@@ -100,6 +132,11 @@ namespace ToDoDemo.Controllers
             }
             return RedirectToAction("Index", new { ID = id });
         }
+        /// <summary>
+        /// Deletes completed tasks.
+        /// </summary>
+        /// <param name="id">A filter identifier string.</param>
+        /// <returns>Redirects to the Index action after deleting completed tasks.</returns>
         [HttpPost]
         public IActionResult DeleteComplete(string id) 
         {

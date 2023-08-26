@@ -4,6 +4,7 @@
     <div class="row">
         <div class="col-md-2">
             <form asp-action="Filter" method="post">
+            <!-- Category Filter -->
                 <div class="mb-3">
                     <label class="form-label">Category</label>
                     <select name="filter" class="form-select"
@@ -11,12 +12,15 @@
                     <option value="all">All</option>
                     </select>   
                 </div>
+            <!-- Due Filter -->
                 <div class="mb-3">
                     <label class="form-label">Due:</label>
                     <select name="filter" class="form-select" asp-items="@(new SelectList(ViewBag.DueFilters,"Key", "Value", ViewBag.Filters.Due ))">
                         <option value="all">All</option>
                     </select>
                 </div>
+            <!-- Status Filter -->
+
                 <div class="mb-3">
                     <label class="form-label">Status:</label>
                     <select name="filter" class="form-select" asp-items="@(new SelectList(ViewBag.Statuses,"StatusId", "Name", ViewBag.Filters.StatusId ))">
@@ -28,6 +32,8 @@
             </form>
         </div>
         <div class="col-md-10">
+        <!-- Mark Complete Form -->
+
             <form asp-action="MarkComplete" method="post" asp-route-id="@ViewBag.Filters.FilterString">
                 <table class="table table-bordered table-striped mt-2">
                     <thead>
@@ -63,6 +69,8 @@
                 </tbody>
                 </table>
             </form>
+        <!-- Delete Complete Form -->
+
             <form asp-action="DeleteComplete" method="post" asp-route-id="@ViewBag.Filters.FilterString">
                 <a asp-action="Add" class="btn btn-primary">Add new task</a>
                 <button type="submit" class="btn btn-primary">Delete completed tasks</button>
