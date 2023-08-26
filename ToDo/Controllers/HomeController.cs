@@ -12,16 +12,17 @@ namespace ToDoDemo.Controllers
 
         public HomeController(ToDoContext ctx)
         {
-            this.context = ctx;
+          context = ctx;
         }
-
+            
         public IActionResult Index(string id)
         {
             var filters = new Filters(id);
             ViewBag.Filters = filters;
-            ViewBag.Statuses = context.Statuss.ToList();
+            ViewBag.Statuses = context.Statues.ToList();
             ViewBag.DueFilters = Filters.DueFilterValues;
-
+            ViewBag.Categories = context.Categories.ToList();
+            ViewBag.Statuses = context.Statues.ToList();
             IQueryable<ToDo> query = context.ToDos.
                 Include(t => t.Category).Include(t => t.Status);
 
@@ -58,7 +59,7 @@ namespace ToDoDemo.Controllers
         public IActionResult Add()
         {
             ViewBag.Categories = context.Categories.ToList();
-            ViewBag.Statuses   = context.Statuss.ToList();
+            ViewBag.Statuses   = context.Statues.ToList();
             var tasks = new ToDo { StatusId = "open" };
             return View(tasks);
         }
@@ -75,7 +76,7 @@ namespace ToDoDemo.Controllers
             else
             {
                 ViewBag.Categories = context.Categories.ToList();
-                ViewBag.Statuss = context.Statuss.ToList();
+                ViewBag.Statuss = context.Statues.ToList();
                 return View(task);
             }
 

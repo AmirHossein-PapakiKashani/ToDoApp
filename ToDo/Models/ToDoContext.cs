@@ -6,11 +6,11 @@ namespace ToDoDemo.Models
     {
         public ToDoContext(DbContextOptions<ToDoContext> options) : base(options) { }
 
-        public DbSet<ToDo> ToDos { get; set; } = null;
+        public DbSet<ToDo> ToDos { get; set; } = null!;
 
-        public DbSet<Category> Categories { get; set; } = null;
+        public DbSet<Category> Categories { get; set; } = null!;
 
-        public DbSet<Status> Statuss { get; set; } = null;
+        public DbSet<Status> Statues { get; set; } = null!;
 
         // seed data 
 
